@@ -1,0 +1,1493 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="theme-thmanyah">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ملاعب اليوم - بث رياضي مباشر</title>
+  <meta name="description" content="منصة عربية لمتابعة المباريات والبثوث الرياضية المباشرة.">
+  <style>
+    @font-face {
+      font-family: "Thmanyah Sans";
+      src: url("fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Light.woff2") format("woff2");
+      font-weight: 300;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Thmanyah Sans";
+      src: url("fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Thmanyah Sans";
+      src: url("fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Medium.woff2") format("woff2");
+      font-weight: 500;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Thmanyah Sans";
+      src: url("fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Thmanyah Sans";
+      src: url("fonts/thmanyah typeface/thmanyahsans/woff2/thmanyahsans-Black.woff2") format("woff2");
+      font-weight: 900;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Thmanyah Serif Display";
+      src: url("fonts/thmanyah typeface/thmanyahserifdisplay/woff2/thmanyahserifdisplay-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    :root {
+      --background: #f6f4ee;
+      --foreground: #000000;
+      --muted: #4d4d4d;
+      --muted-2: #77736b;
+      --border: #dbd9d5;
+      --card: #efede8;
+      --accent: #fa541c;
+      --primary: #fa541c;
+      --primary-dark: #8f2b05;
+      --tile: #efede8;
+      --tile-text: #0a0a0a;
+      --orange: #fa541c;
+      --radius: 8px;
+      --container: 1060px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      color-scheme: light;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: "Thmanyah Sans", "IBM Plex Sans Arabic", Tahoma, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.35;
+      text-align: right;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      width: 100%;
+      border-bottom: 1px solid rgba(38, 38, 38, .75);
+      background: rgba(246, 244, 238, .95);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      height: 56px;
+      max-width: 1536px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-inline-end: 8px;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+    }
+
+    .brand svg,
+    .icon {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .main-nav a,
+    .nav-text-button {
+      color: var(--muted);
+      background: transparent;
+      padding: 0;
+      transition: color .16s ease;
+    }
+
+    .main-nav a:hover,
+    .nav-text-button:hover,
+    .main-nav .active {
+      color: var(--foreground);
+    }
+
+    .header-actions {
+      margin-inline-start: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-trigger {
+      width: 256px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px 0 16px;
+      text-align: right;
+    }
+
+    .search-trigger kbd {
+      color: var(--muted-2);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .btn {
+      height: 40px;
+      min-width: 40px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+      color: var(--foreground);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: border-color .16s ease, background .16s ease;
+    }
+
+    .btn:hover,
+    .search-trigger:hover {
+      border-color: #bcb7ad;
+      background: var(--card);
+    }
+
+    .icon-btn {
+      width: 40px;
+      padding: 0;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    main {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 8px 0 64px;
+    }
+
+    .mirror-card {
+      display: block;
+      margin: 0 0 14px;
+      padding: 24px 40px;
+      border: 1px solid rgba(250, 84, 28, .34);
+      border-radius: var(--radius);
+      background: #f1e8db;
+      color: var(--foreground);
+      text-align: center;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .mirror-card u {
+      text-underline-offset: 2px;
+    }
+
+    .section {
+      margin-top: 16px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.3;
+      font-family: "Thmanyah Serif Display", "Thmanyah Sans", serif;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .section-actions {
+      display: flex;
+      gap: 8px;
+      direction: rtl;
+      flex: 0 0 auto;
+    }
+
+    .arrow {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+      color: var(--foreground);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: .9;
+      transition: opacity .16s ease, border-color .16s ease;
+    }
+
+    .arrow:hover {
+      border-color: #bcb7ad;
+      opacity: 1;
+    }
+
+    .rail-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rail {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+
+    .rail::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sport-card {
+      flex: 0 0 190px;
+      scroll-snap-align: start;
+      outline: none;
+    }
+
+    .sport-tile {
+      height: 190px;
+      border-radius: 8px;
+      background: var(--tile);
+      color: var(--tile-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      font-size: 28px;
+      font-family: "Thmanyah Serif Display", "Thmanyah Sans", serif;
+      font-weight: 700;
+      line-height: 1.1;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .sport-card:hover .sport-tile {
+      transform: scale(1.02);
+      background: #e8e4da;
+    }
+
+    .sport-name {
+      margin-top: 10px;
+      width: 100%;
+      color: var(--foreground);
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .match-card {
+      flex: 0 0 248px;
+      scroll-snap-align: start;
+      display: block;
+      min-width: 0;
+    }
+
+    .poster {
+      position: relative;
+      height: 140px;
+      overflow: hidden;
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 18% 18%, color-mix(in srgb, var(--poster-accent, #fa541c) 82%, white 6%) 0 10%, transparent 38%),
+        linear-gradient(135deg, #11110f 0%, var(--poster-accent-2, #2f2b19) 52%, var(--poster-accent, #fa541c) 120%);
+      border: 1px solid rgba(0, 0, 0, .08);
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+      padding: 14px;
+    }
+
+    .poster::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      z-index: 1;
+      background:
+        linear-gradient(110deg, transparent 0 38%, rgba(255, 255, 255, .16) 39% 42%, transparent 43% 100%),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, .08) 0 1px, transparent 1px 12px);
+      opacity: .45;
+      transition: transform .8s ease;
+    }
+
+    .poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(0deg, rgba(0, 0, 0, .78), rgba(0, 0, 0, .12) 58%, rgba(0, 0, 0, .24));
+    }
+
+    .match-card:hover .poster::before {
+      transform: scale(1.08);
+    }
+
+    .poster img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+
+    .match-card:hover .poster img {
+      transform: scale(1.06);
+    }
+
+    .poster-copy {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      max-width: 92%;
+    }
+
+    .poster-category {
+      color: rgba(255, 255, 255, .72);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .poster-copy strong {
+      color: #fff;
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 900;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .badge {
+      position: absolute;
+      top: 8px;
+      inset-inline-start: 8px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white;
+      padding: 2px 10px;
+      font-size: 12px;
+      line-height: 20px;
+      font-weight: 850;
+    }
+
+    .viewer-badge {
+      inset-inline-start: auto;
+      inset-inline-end: 8px;
+      background: var(--orange);
+      font-size: 11px;
+      padding: 2px 8px;
+    }
+
+    .viewer-badge svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .match-info {
+      padding: 12px 0 0;
+    }
+
+    .match-title {
+      min-height: 54px;
+      margin: 0;
+      color: var(--foreground);
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 850;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .match-meta {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .match-meta strong {
+      color: var(--foreground);
+      font-weight: 700;
+    }
+
+    .empty-line,
+    .loading-line {
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      min-width: 260px;
+    }
+
+    .skeleton {
+      flex: 0 0 248px;
+    }
+
+    .skeleton .poster,
+    .skeleton-line {
+      background: linear-gradient(90deg, #151515, #222, #151515);
+      background-size: 200% 100%;
+      animation: shimmer 1.2s infinite;
+    }
+
+    .skeleton .poster::before,
+    .skeleton .poster::after {
+      display: none;
+    }
+
+    .skeleton-line {
+      height: 16px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    .skeleton-line.short {
+      width: 70%;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 72px 16px 24px;
+      background: rgba(0, 0, 0, .48);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .dialog {
+      width: min(960px, 100%);
+      max-height: calc(100vh - 96px);
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--background);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
+    }
+
+    .dialog.small {
+      width: min(640px, 100%);
+    }
+
+    .dialog-head {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(246, 244, 238, .96);
+      backdrop-filter: blur(8px);
+    }
+
+    .dialog-title {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.25;
+      font-family: "Thmanyah Serif Display", "Thmanyah Sans", serif;
+      font-weight: 700;
+    }
+
+    .dialog-body {
+      padding: 16px;
+    }
+
+    .close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+      color: var(--foreground);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+      color: var(--foreground);
+      padding: 0 14px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: #bcb7ad;
+    }
+
+    .result-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .result {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+      color: var(--foreground);
+      padding: 12px;
+      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .result:hover {
+      border-color: #bcb7ad;
+    }
+
+    .stream-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .player {
+      min-height: 360px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #111;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+    }
+
+    .player iframe {
+      display: none;
+      width: 100%;
+      height: 420px;
+      border: 0;
+      background: black;
+    }
+
+    .player.has-stream iframe {
+      display: block;
+    }
+
+    .player.has-stream .player-empty {
+      display: none;
+    }
+
+    .source-group {
+      margin-bottom: 16px;
+      border: 1px solid rgba(38, 38, 38, .8);
+      border-radius: 8px;
+      padding: 12px;
+      background: var(--card);
+    }
+
+    .source-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .source-title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 850;
+      text-transform: capitalize;
+    }
+
+    .source-sub {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .count-pill {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      padding: 2px 8px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .quality-title {
+      margin: 12px 0 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .stream-row {
+      width: 100%;
+      border: 1px solid rgba(38, 38, 38, .85);
+      border-radius: 6px;
+      background: white;
+      color: var(--foreground);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px;
+      margin-bottom: 6px;
+      text-align: right;
+    }
+
+    .stream-row:hover,
+    .stream-row.active {
+      border-color: var(--primary);
+    }
+
+    .stream-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .quality {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .quality.sd {
+      background: #404040;
+    }
+
+    .stream-lang {
+      color: var(--muted);
+      font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      z-index: 120;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+      color: var(--foreground);
+      padding: 10px 14px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, .4);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .status-line {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: .65;
+      }
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: -200% 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .main-nav {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: inline-flex;
+      }
+
+      .search-trigger {
+        width: 160px;
+      }
+
+      .search-trigger kbd,
+      .hide-md {
+        display: none;
+      }
+
+      main {
+        padding-inline: 16px;
+      }
+
+      .mirror-card {
+        padding: 18px 16px;
+      }
+
+      .stream-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .brand span,
+      .desktop-only,
+      .search-trigger {
+        display: none;
+      }
+
+      .header-inner {
+        gap: 8px;
+      }
+
+      .sport-card {
+        flex-basis: 170px;
+      }
+
+      .sport-tile {
+        height: 170px;
+        font-size: 24px;
+      }
+
+      .match-card {
+        flex-basis: 216px;
+      }
+
+      .poster {
+        height: 122px;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="الرئيسية">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M7 3h10l4 5-9 13L3 8l4-5Z"></path>
+          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m8 8 4 7 4-7M7 3l5 5 5-5"></path>
+        </svg>
+        <span>ملاعب اليوم</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a class="active" href="#">الرئيسية</a>
+        <a href="#sports-title">الرياضات</a>
+        <a href="#popular-live">الرائج الآن</a>
+        <a href="#popular-viewers">الأكثر مشاهدة</a>
+        <button class="nav-text-button" id="feedbackOpen" type="button">ملاحظات</button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="search-trigger" id="searchOpen" type="button">
+          <span>بحث</span>
+          <kbd>Ctrl K</kbd>
+        </button>
+        <button class="btn mobile-menu icon-btn" id="mobileSearch" type="button" aria-label="بحث">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="m20 20-3.2-3.2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+          </svg>
+        </button>
+        <button class="btn desktop-only" id="multiOpen" type="button">بث متعدد</button>
+        <button class="btn icon-btn desktop-only" type="button" id="domainOpen" aria-label="عن المنصة">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M3 12h18M12 3c2.4 2.4 3.6 5.4 3.6 9S14.4 18.6 12 21M12 3C9.6 5.4 8.4 8.4 8.4 12S9.6 18.6 12 21" fill="none" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" aria-labelledby="sports-title">
+      <div class="section-head">
+        <h1 class="section-title" id="sports-title">الرياضات</h1>
+        <div class="section-actions">
+          <button class="arrow" type="button" data-scroll="#sportsRail" data-dir="-1" aria-label="الرياضات السابقة">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+          <button class="arrow" type="button" data-scroll="#sportsRail" data-dir="1" aria-label="الرياضات التالية">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+      <div class="rail-wrap">
+        <div class="rail" id="sportsRail">
+          <div class="loading-line">جاري تحميل الرياضات...</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="sectionsRoot"></div>
+  </main>
+
+  <div class="modal" id="searchModal" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <div class="dialog small">
+      <div class="dialog-head">
+        <h2 class="dialog-title" id="searchTitle">بحث</h2>
+        <button class="close" type="button" data-close="searchModal" aria-label="إغلاق البحث">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <input class="search-input" id="searchInput" type="search" placeholder="ابحث عن مباراة أو فريق أو رياضة..." autocomplete="off">
+        <div class="result-list" id="searchResults">
+          <p class="status-line">اكتب للبحث في نتائج الواجهة الحية.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="streamModal" role="dialog" aria-modal="true" aria-labelledby="streamTitle">
+    <div class="dialog">
+      <div class="dialog-head">
+        <div>
+          <h2 class="dialog-title" id="streamTitle">روابط البث</h2>
+          <p class="status-line" id="streamMeta"></p>
+        </div>
+        <button class="close" type="button" data-close="streamModal" aria-label="إغلاق روابط البث">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <div class="stream-layout">
+          <div id="streamList">
+            <p class="status-line">Choose a match first.</p>
+          </div>
+          <div>
+            <div class="player" id="playerBox">
+              <div class="player-empty">اختر بثًا لتشغيل المشغل.</div>
+              <iframe id="streamFrame" title="Selected stream" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="no-referrer"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="feedbackModal" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
+    <div class="dialog small">
+      <div class="dialog-head">
+        <h2 class="dialog-title" id="feedbackTitle">إرسال ملاحظة</h2>
+        <button class="close" type="button" data-close="feedbackModal" aria-label="إغلاق الملاحظات">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <p class="status-line">نسخة العرض تحفظ الملاحظات محليًا. استخدم الموقع الأصلي لإرسالها.</p>
+        <textarea class="search-input" style="height:120px;margin-top:12px;padding-top:12px;resize:vertical" placeholder="اكتب ملاحظتك"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="multiModal" role="dialog" aria-modal="true" aria-labelledby="multiTitle">
+    <div class="dialog small">
+      <div class="dialog-head">
+        <h2 class="dialog-title" id="multiTitle">بث متعدد</h2>
+        <button class="close" type="button" data-close="multiModal" aria-label="إغلاق البث المتعدد">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <p class="status-line">افتح المباريات من البطاقات. هذه النسخة الأحادية تشغّل مشغلًا مدمجًا واحدًا في كل مرة.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const API_ORIGIN = "https://s" + "treamed.pk";
+    const API = API_ORIGIN + "/api";
+    const AR_SPORTS = {
+      basketball: "كرة السلة",
+      football: "كرة القدم",
+      "american-football": "كرة القدم الأمريكية",
+      hockey: "الهوكي",
+      baseball: "البيسبول",
+      "motor-sports": "رياضات المحركات",
+      fight: "النزالات",
+      tennis: "التنس",
+      rugby: "الرقبي",
+      golf: "الغولف",
+      billiards: "البلياردو",
+      afl: "الدوري الأسترالي",
+      darts: "السهام",
+      cricket: "الكريكيت",
+      other: "أخرى"
+    };
+    const state = {
+      sports: [],
+      sections: new Map(),
+      matches: new Map(),
+      allMatches: [],
+      selectedStreamUrl: ""
+    };
+
+    const sourceDescriptions = {
+      admin: "بثوث مضافة من الإدارة",
+      alpha: "مصدر رئيسي",
+      bravo: "مصدر احتياطي",
+      charlie: "مصدر احتياطي",
+      delta: "مصدر احتياطي",
+      echo: "جودة جيدة عمومًا",
+      foxtrot: "مصدر احتياطي",
+      golf: "طرف ثالث أكثر استقرارًا",
+      hotel: "مصدر احتياطي",
+      intel: "مصدر احتياطي"
+    };
+
+    const qs = (sel, root = document) => root.querySelector(sel);
+    const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    function iconEye() {
+      return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function normalizeName(value) {
+      return String(value || "")
+        .split("-")
+        .filter(Boolean)
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join(" ");
+    }
+
+    async function fetchJson(path) {
+      const url = path.startsWith("http") ? path : API + path;
+      const res = await fetch(url, { headers: { Accept: "application/json" } });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      return res.json();
+    }
+
+    async function safeJson(path, fallback = []) {
+      try {
+        return await fetchJson(path);
+      } catch (error) {
+        console.warn("API failed:", path, error);
+        return fallback;
+      }
+    }
+
+    function asArray(value) {
+      return Array.isArray(value) ? value : [];
+    }
+
+    function timeLabel(ms) {
+      if (!ms) return "";
+      try {
+        return new Date(ms).toLocaleTimeString("ar", { hour: "numeric", minute: "2-digit" });
+      } catch {
+        return "";
+      }
+    }
+
+    function sportLabel(sport) {
+      if (!sport) return "";
+      const id = typeof sport === "string" ? sport : sport.id;
+      const fallback = typeof sport === "string" ? normalizeName(sport) : sport.name;
+      return AR_SPORTS[id] || fallback || normalizeName(id);
+    }
+
+    function categoryName(id) {
+      const sport = state.sports.find((item) => item.id === id);
+      return sport ? sportLabel(sport) : (AR_SPORTS[id] || normalizeName(id));
+    }
+
+    function containsBlockedBrand(value) {
+      const brand = "s" + "treamed";
+      return String(value || "").toLowerCase().includes(brand);
+    }
+
+    function isBlockedBrandItem(match) {
+      return [match && match.title, match && match.name, match && match.shortName].some(containsBlockedBrand);
+    }
+
+    function posterVars(match) {
+      const text = `${match && match.title ? match.title : ""}${match && match.category ? match.category : ""}`;
+      let hash = 0;
+      for (let i = 0; i < text.length; i += 1) hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
+      const hue = 12 + Math.abs(hash % 34);
+      const hue2 = (hue + 112) % 360;
+      return `--poster-accent:hsl(${hue} 82% 48%);--poster-accent-2:hsl(${hue2} 42% 22%);`;
+    }
+
+    function posterUrl(match) {
+      if (match.poster) {
+        if (/^https?:\/\//i.test(match.poster)) return match.poster;
+        return API_ORIGIN + match.poster;
+      }
+      const home = match.teams && match.teams.home && match.teams.home.badge;
+      const away = match.teams && match.teams.away && match.teams.away.badge;
+      if (home && away) return `${API}/images/poster/${home}/${away}.webp`;
+      return "";
+    }
+
+    function rememberMatches(matches) {
+      for (const match of asArray(matches)) {
+        if (!match || !match.id) continue;
+        state.matches.set(match.id, match);
+      }
+      state.allMatches = Array.from(state.matches.values());
+    }
+
+    function scrollRail(selector, dir) {
+      const rail = qs(selector);
+      if (!rail) return;
+      const distance = Math.max(320, rail.clientWidth * .8);
+      const rtlFactor = getComputedStyle(rail).direction === "rtl" ? -1 : 1;
+      rail.scrollBy({ left: dir * distance * rtlFactor, behavior: "smooth" });
+    }
+
+    function openModal(id) {
+      const modal = qs("#" + id);
+      if (!modal) return;
+      modal.classList.add("open");
+      const input = modal.querySelector("input, textarea, button");
+      if (input) setTimeout(() => input.focus(), 40);
+    }
+
+    function closeModal(id) {
+      const modal = qs("#" + id);
+      if (!modal) return;
+      modal.classList.remove("open");
+      if (id === "streamModal") {
+        qs("#streamFrame").src = "about:blank";
+        qs("#playerBox").classList.remove("has-stream");
+      }
+    }
+
+    function toast(message) {
+      const el = qs("#toast");
+      el.textContent = message;
+      el.classList.add("show");
+      clearTimeout(toast.timer);
+      toast.timer = setTimeout(() => el.classList.remove("show"), 2600);
+    }
+
+    function skeleton(count = 6) {
+      return Array.from({ length: count }, () => `
+        <div class="skeleton">
+          <div class="poster"></div>
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line short"></div>
+        </div>
+      `).join("");
+    }
+
+    function renderSports(sports) {
+      const rail = qs("#sportsRail");
+      if (!sports.length) {
+        rail.innerHTML = '<div class="empty-line">لم تُرجع الواجهة أي رياضات.</div>';
+        return;
+      }
+
+      rail.innerHTML = sports.map((sport) => `
+        <a class="sport-card" href="#sport-${escapeHtml(sport.id)}" data-sport-jump="${escapeHtml(sport.id)}">
+          <div class="sport-tile">${escapeHtml(sportLabel(sport))}</div>
+          <div class="sport-name">${escapeHtml(sportLabel(sport))}</div>
+        </a>
+      `).join("");
+    }
+
+    function sectionShell(id, title) {
+      const root = qs("#sectionsRoot");
+      const safeId = "section-" + id.replace(/[^a-z0-9_-]/gi, "-");
+      const section = document.createElement("section");
+      section.className = "section";
+      section.id = id.startsWith("sport-") ? id : safeId;
+      section.innerHTML = `
+        <div class="section-head">
+          <h2 class="section-title">${escapeHtml(title)}</h2>
+          <div class="section-actions">
+            <button class="arrow" type="button" data-scroll="#${safeId}-rail" data-dir="-1" aria-label="السابق: ${escapeHtml(title)}">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            </button>
+            <button class="arrow" type="button" data-scroll="#${safeId}-rail" data-dir="1" aria-label="التالي: ${escapeHtml(title)}">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            </button>
+          </div>
+        </div>
+        <div class="rail-wrap">
+          <div class="rail" id="${safeId}-rail">${skeleton()}</div>
+        </div>
+      `;
+      root.appendChild(section);
+      return section;
+    }
+
+    function renderSection(id, title, matches, options = {}) {
+      let section = state.sections.get(id);
+      if (!section) {
+        section = sectionShell(id, title);
+        state.sections.set(id, section);
+      }
+
+      const rail = section.querySelector(".rail");
+      const list = asArray(matches).filter((match) => match && !isBlockedBrandItem(match));
+      rememberMatches(list);
+
+      if (!list.length) {
+        rail.innerHTML = `<div class="empty-line">لا توجد عناصر ضمن ${escapeHtml(title)} الآن.</div>`;
+        return;
+      }
+
+      rail.innerHTML = list.map((match) => matchCard(match, options)).join("");
+    }
+
+    function matchCard(match, options = {}) {
+      const viewers = match.viewers || match.viewerCount || match.views || "";
+      const category = categoryName(match.category);
+      const poster = posterUrl(match);
+      return `
+        <a class="match-card" href="#watch-${escapeHtml(match.id)}" data-match-id="${escapeHtml(match.id)}">
+          <div class="poster" style="${posterVars(match)}">
+            ${poster ? `<img src="${escapeHtml(poster)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
+            <span class="badge">مباشر</span>
+            ${viewers ? `<span class="badge viewer-badge">${escapeHtml(viewers)} ${iconEye()}</span>` : ""}
+            <div class="poster-copy">
+              <span class="poster-category">${escapeHtml(category)}</span>
+              <strong dir="auto">${escapeHtml(match.title)}</strong>
+            </div>
+          </div>
+          <div class="match-info">
+            <h3 class="match-title" dir="auto">${escapeHtml(match.title)}</h3>
+            <p class="match-meta"><strong>${escapeHtml(category)}</strong>${match.date ? ` | ${escapeHtml(timeLabel(match.date))}` : ""}</p>
+          </div>
+        </a>
+      `;
+    }
+
+    async function openMatch(match) {
+      qs("#streamTitle").textContent = `روابط بث ${match.title}`;
+      qs("#streamMeta").textContent = "اختر مصدرًا. تُحمّل الروابط من المصدر الحي مباشرة.";
+      qs("#streamList").innerHTML = '<p class="status-line">جاري تحميل مصادر البث...</p>';
+      qs("#streamFrame").src = "about:blank";
+      qs("#playerBox").classList.remove("has-stream");
+      openModal("streamModal");
+
+      const sources = asArray(match.sources);
+      if (!sources.length) {
+        qs("#streamList").innerHTML = '<p class="status-line">لا توجد مصادر بث لهذه المباراة بعد.</p>';
+        return;
+      }
+
+      const groups = await Promise.all(sources.map(async (source) => {
+        const streams = await safeJson(`/stream/${source.source}/${source.id}`, []);
+        return { source, streams: asArray(streams).filter((stream) => isSafeEmbedUrl(stream.embedUrl)) };
+      }));
+
+      const useful = groups.filter((group) => group.streams.length);
+      if (!useful.length) {
+        qs("#streamList").innerHTML = '<p class="status-line">لم تُرجع الواجهة روابط بث بعد.</p>';
+        return;
+      }
+
+      qs("#streamList").innerHTML = useful.map(renderSourceGroup).join("");
+    }
+
+    function renderSourceGroup(group) {
+      const name = group.source.source;
+      const streams = group.streams.slice().sort((a, b) => {
+        if (a.hd !== b.hd) return a.hd ? -1 : 1;
+        return (a.streamNo || 0) - (b.streamNo || 0);
+      });
+      const hd = streams.filter((s) => s.hd);
+      const sd = streams.filter((s) => !s.hd);
+      return `
+        <div class="source-group">
+          <div class="source-head">
+            <div>
+              <h3 class="source-title">${escapeHtml(name)}</h3>
+              <p class="source-sub">${escapeHtml(sourceDescriptions[name] || "مصدر بث")}</p>
+            </div>
+            <span class="count-pill">${streams.length} بث</span>
+          </div>
+          ${streamRows("جودة عالية", hd)}
+          ${streamRows("جودة عادية", sd)}
+        </div>
+      `;
+    }
+
+    function isSafeEmbedUrl(value) {
+      try {
+        const parsed = new URL(value);
+        const host = parsed.hostname.toLowerCase();
+        const blockedParts = ["mel" + "bet", "1x" + "bet", "22" + "bet", "betwinner"];
+        const trustedHost = host === "embed.st" || host.endsWith(".embed.st");
+        return /^https?:$/.test(parsed.protocol) && trustedHost && !blockedParts.some((part) => host.includes(part));
+      } catch {
+        return false;
+      }
+    }
+
+    function streamRows(title, streams) {
+      if (!streams.length) return "";
+      return `
+        <div class="quality-title">${escapeHtml(title)}</div>
+        ${streams.map((stream) => `
+          <button class="stream-row" type="button"
+            data-embed="${escapeHtml(stream.embedUrl)}"
+            data-stream-label="${escapeHtml(`${stream.hd ? "HD" : "SD"} بث ${stream.streamNo}`)}">
+            <span class="stream-name">
+              <span class="quality ${stream.hd ? "" : "sd"}">${stream.hd ? "HD" : "SD"}</span>
+              <strong>بث ${escapeHtml(stream.streamNo)}</strong>
+            </span>
+            <span class="stream-lang">${stream.viewers ? escapeHtml(stream.viewers) + " " : ""}${escapeHtml(stream.language || "")}</span>
+          </button>
+        `).join("")}
+      `;
+    }
+
+    function loadStream(button) {
+      const url = button.dataset.embed;
+      if (!url) return;
+      if (!isSafeEmbedUrl(url)) {
+        toast("تم حظر رابط إعلان خارجي");
+        return;
+      }
+      qsa(".stream-row").forEach((row) => row.classList.remove("active"));
+      button.classList.add("active");
+      state.selectedStreamUrl = url;
+      qs("#streamFrame").src = url;
+      qs("#playerBox").classList.add("has-stream");
+    }
+
+    function renderSearch(query) {
+      const target = qs("#searchResults");
+      const q = query.trim().toLowerCase();
+      if (!q) {
+        target.innerHTML = '<p class="status-line">اكتب للبحث في نتائج الواجهة الحية.</p>';
+        return;
+      }
+      const results = state.allMatches
+        .filter((match) => {
+          const haystack = [
+            match.title,
+            match.category,
+            match.teams && match.teams.home && match.teams.home.name,
+            match.teams && match.teams.away && match.teams.away.name
+          ].join(" ").toLowerCase();
+          return haystack.includes(q);
+        })
+        .slice(0, 12);
+
+      if (!results.length) {
+        target.innerHTML = '<p class="status-line">لا توجد مباريات مطابقة في البيانات المحمّلة.</p>';
+        return;
+      }
+
+      target.innerHTML = results.map((match) => `
+        <button class="result" type="button" data-match-id="${escapeHtml(match.id)}">
+          <span>
+            <strong dir="auto">${escapeHtml(match.title)}</strong><br>
+            <span class="status-line">${escapeHtml(categoryName(match.category))} ${match.date ? "| " + escapeHtml(timeLabel(match.date)) : ""}</span>
+          </span>
+          <span>فتح</span>
+        </button>
+      `).join("");
+    }
+
+    async function init() {
+      document.body.addEventListener("click", async (event) => {
+        const close = event.target.closest("[data-close]");
+        if (close) closeModal(close.dataset.close);
+
+        const scrollButton = event.target.closest("[data-scroll]");
+        if (scrollButton) scrollRail(scrollButton.dataset.scroll, Number(scrollButton.dataset.dir || 1));
+
+        const sportJump = event.target.closest("[data-sport-jump]");
+        if (sportJump) {
+          event.preventDefault();
+          const section = qs("#sport-" + sportJump.dataset.sportJump);
+          if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        const card = event.target.closest("[data-match-id]");
+        if (card && !event.target.closest("#searchResults")) {
+          event.preventDefault();
+          const match = state.matches.get(card.dataset.matchId);
+          if (match) await openMatch(match);
+        }
+
+        const result = event.target.closest("#searchResults [data-match-id]");
+        if (result) {
+          const match = state.matches.get(result.dataset.matchId);
+          closeModal("searchModal");
+          if (match) await openMatch(match);
+        }
+
+        const streamButton = event.target.closest(".stream-row");
+        if (streamButton) loadStream(streamButton);
+      });
+
+      qsa(".modal").forEach((modal) => {
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) closeModal(modal.id);
+        });
+      });
+
+      qs("#searchOpen").addEventListener("click", () => openModal("searchModal"));
+      qs("#mobileSearch").addEventListener("click", () => openModal("searchModal"));
+      qs("#feedbackOpen").addEventListener("click", () => openModal("feedbackModal"));
+      qs("#multiOpen").addEventListener("click", () => openModal("multiModal"));
+      qs("#domainOpen").addEventListener("click", () => toast("ملاعب اليوم: واجهة عربية خفيفة لمتابعة البثوث الرياضية الحية"));
+      qs("#searchInput").addEventListener("input", (event) => renderSearch(event.target.value));
+
+      document.addEventListener("keydown", (event) => {
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+          event.preventDefault();
+          openModal("searchModal");
+        }
+        if (event.key === "Escape") qsa(".modal.open").forEach((modal) => closeModal(modal.id));
+      });
+
+      const sports = asArray(await safeJson("/sports", []));
+      state.sports = sports;
+      renderSports(sports);
+
+      renderSection("popular-viewers", "الأكثر مشاهدة الآن", []);
+      renderSection("popular-live", "البثوث المباشرة الرائجة", []);
+      for (const sport of sports) {
+        const section = sectionShell("sport-" + sport.id, sportLabel(sport));
+        state.sections.set("sport-" + sport.id, section);
+      }
+
+      const [popularViewers, popularLive, featured] = await Promise.all([
+        safeJson("/matches/live/popular-viewcount", []),
+        safeJson("/matches/live/popular", []),
+        safeJson("/matches/featured", [])
+      ]);
+
+      renderSection("popular-viewers", "الأكثر مشاهدة الآن", asArray(popularViewers));
+      renderSection("popular-live", "البثوث المباشرة الرائجة", asArray(popularLive).length ? popularLive : featured);
+
+      await Promise.allSettled(sports.map(async (sport) => {
+        const matches = await safeJson(`/matches/${sport.id}/popular`, []);
+        renderSection("sport-" + sport.id, sportLabel(sport), asArray(matches));
+      }));
+
+      toast("بيانات البث جاهزة");
+    }
+
+    init().catch((error) => {
+      console.error(error);
+      qs("#sportsRail").innerHTML = '<div class="empty-line">تعذر تحميل البيانات الحية. راجع وحدة التحكم للتفاصيل.</div>';
+      toast("فشل تحميل البيانات");
+    });
+  </script>
+</body>
+</html>
